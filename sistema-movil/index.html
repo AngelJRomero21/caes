@@ -49,34 +49,27 @@
   </form>
 
   <script>
-    function consultarSaldo() {
-      const phoneInput = document.getElementById('phone');
-      const phoneNumber = phoneInput.value;
+   function consultarSaldo() {
+  const phoneInput = document.getElementById('phone');
+  const phoneNumber = phoneInput.value;
 
-      // Llamada a la API para consultar saldo
-      fetch(`https://communities.cyclos.org/sicoque/sms?sender=${phoneNumber}&texto=acinfo`)
-        .then(response => {
-          if (response.ok) {
-            alert('Consulta de saldo exitosa. Se envió un mensaje.');
-          } else {
-            alert('Error al realizar la consulta de saldo.');
-          }
-        })
-        .catch(error => {
-          alert('Error al conectarse con la API para consultar saldo.');
-          console.error(error);
-        });
-    }
-
-    function comprarAccion() {
-      // Lógica para comprar acción (a completar)
-      alert('Funcionalidad de Comprar Acción por implementar.');
-    }
-
-    function venderAccion() {
-      // Lógica para vender acción (a completar)
-      alert('Funcionalidad de Vender Acción por implementar.');
-    }
+  fetch(`https://communities.cyclos.org/sicoque/sms?sender=${phoneNumber}&texto=acinfo`)
+    .then(response => {
+      if (response.ok) {
+        return response.text();
+      } else {
+        throw new Error('Error al realizar la consulta de saldo.');
+      }
+    })
+    .then(data => {
+      console.log('Respuesta de la API:', data); // Muestra la respuesta en la consola
+      alert('Consulta de saldo exitosa. Se envió un mensaje.');
+    })
+    .catch(error => {
+      alert(error.message);
+      console.error(error);
+    });
+}
   </script>
 </body>
 </html>
