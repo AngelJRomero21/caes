@@ -42,10 +42,9 @@
 <body>
   <form id="phoneForm">
     <label for="phone">Ingrese su número de teléfono:</label>
-    <input type="tel" id="phone" name="phone" placeholder="Ingrese su teléfono" required>
+    <br>
+    <input type="tel" id="phone" name="phone" placeholder="Ingrese su numero de WhatsApp" required>
     <button type="button" onclick="consultarSaldo()">Consultar Saldo</button>
-    <button type="button" onclick="comprarAccion()">Comprar Acción</button>
-    <button type="button" onclick="venderAccion()">Vender Acción</button>
   </form>
 
   <script>
@@ -67,15 +66,6 @@
           alert('Solicitud de consulta de saldo enviada.');
         });
     }
-
-    function comprarAccion() {
-      window.location.href = './acciones/compra';
-    }
-
-    function venderAccion() {
-      window.location.href = './acciones/venta';
-    }
-
   </script>
   
 </body>
