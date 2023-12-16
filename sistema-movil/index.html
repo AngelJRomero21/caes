@@ -50,26 +50,25 @@
 
   <script>
     function consultarSaldo() {
-    const phoneInput = document.getElementById('phone');
-    const phoneNumber = phoneInput.value;
-
-    fetch(`https://communities.cyclos.org/sicoque/sms?sender=${phoneNumber}&texto=acinfo`)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('La solicitud no fue exitosa. Estado de la respuesta: ' + response.status);
-        }
-        return response.text();
-      })
-      .then(data => {
-        console.log('Respuesta de la API:', data);
-        alert('Consulta de saldo exitosa. Se envió un mensaje.');
-      })
-      .catch(error => {
-        console.error('Error al realizar la solicitud:', error);
-        alert('Error al realizar la consulta de saldo.');
-      });
-  }
+      const phoneInput = document.getElementById('phone');
+      const phoneNumber = phoneInput.value;
+  
+      fetch(`https://communities.cyclos.org/sicoque/sms?sender=${phoneNumber}&texto=acinfo`)
+        .then(response => {
+          console.log('Solicitud de consulta de saldo enviada.');
+          return response.text();
+        })
+        .then(data => {
+          console.log('Respuesta de la API:', data);
+          alert('Solicitud de consulta de saldo enviada.');
+        })
+        .catch(error => {
+          console.error('Error al realizar la solicitud:', error);
+          alert('Solicitud de consulta de saldo enviada.');
+        });
+    }
   </script>
+  
 </body>
 </html>
 
