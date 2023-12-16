@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interfaz de Acciones</title>
+  <style>
+    /* Estilos para los botones y el formulario */
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    input[type="tel"] {
+      padding: 8px;
+      margin-bottom: 10px;
+      width: 200px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #3498db;
+      color: white;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <form id="phoneForm">
+    <label for="phone">Ingrese su número de teléfono:</label>
+    <input type="tel" id="phone" name="phone" placeholder="Ingrese su teléfono" required>
+    <button type="button" onclick="consultarSaldo()">Consultar Saldo</button>
+    <button type="button" onclick="comprarAccion()">Comprar Acción</button>
+    <button type="button" onclick="venderAccion()">Vender Acción</button>
+  </form>
+
+  <script>
+    function consultarSaldo() {
+      const phoneInput = document.getElementById('phone');
+      const phoneNumber = phoneInput.value;
+
+      // Llamada a la API para consultar saldo
+      fetch(`https://communities.cyclos.org/sicoque/sms?sender=${phoneNumber}&texto=acinfo`)
+        .then(response => {
+          if (response.ok) {
+            alert('Consulta de saldo exitosa. Se envió un mensaje.');
+          } else {
+            alert('Error al realizar la consulta de saldo.');
+          }
+        })
+        .catch(error => {
+          alert('Error al conectarse con la API para consultar saldo.');
+          console.error(error);
+        });
+    }
+
+    function comprarAccion() {
+      // Lógica para comprar acción (a completar)
+      alert('Funcionalidad de Comprar Acción por implementar.');
+    }
+
+    function venderAccion() {
+      // Lógica para vender acción (a completar)
+      alert('Funcionalidad de Vender Acción por implementar.');
+    }
+  </script>
+</body>
+</html>
+
+
