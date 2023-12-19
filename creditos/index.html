@@ -226,7 +226,7 @@
     function calcularInteres() {
       const monto = parseFloat(document.getElementById('monto').value);
       const meses = parseInt(document.getElementById('meses').value);
-      const tasaInteres = 6.5; // Tasa de interés mensual del 6.5%
+      const tasaInteres = 7; // Tasa de interés mensual del 6.5%
       const interesPorMes = (monto * tasaInteres / 100) * meses;
       const totalPagar = monto + interesPorMes;
 
@@ -568,21 +568,6 @@
       formulario.action = 'https://formsubmit.co/cajaagricolaemprededoresdesic@gmail.com';
       formulario.method = 'post';
 
-      // Agregar campos ocultos
-      const camposOcultos = [
-        { name: '_subject', value: 'Solicitud de Creditos - CAES' },
-        { name: '_cc', value: 'mrprogramador21@gmail.com,elvisdanielsalassalcedo@gmail.com' },
-        { name: '_captcha', value: 'false' },
-        { name: '_next', value: 'https://caes.cromstudio.com.ve' }
-      ];
-
-      camposOcultos.forEach((campo) => {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = campo.name;
-        input.value = campo.value;
-        formulario.appendChild(input);
-      });
 
       formulario.submit();
     }
