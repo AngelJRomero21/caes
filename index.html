@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAES - Interfaz</title>
+    <style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f9f9f9;
+}
+
+.container {
+    text-align: center;
+}
+
+.logo {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.btn {
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    display: block;
+}
+
+.btn:hover {
+    filter: brightness(0.9);
+}
+
+.consultar {
+    background-color: #3498db;
+    color: white;
+}
+
+.calcular {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.registrarse {
+    background-color: #e74c3c;
+    color: white;
+}
+
+@media (max-width: 480px) {
+    .btn {
+        padding: 12px;
+        font-size: 1rem;
+    }
+}
+        </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <img class="logo" src="/img/logo1.png" alt="Logo CAES">
+        <div class="options">
+            <a href="/consulta/" class="btn consultar">Consultar Saldo</a>
+            <a href="/creditos/" class="btn calcular">Calcular Créditos</a>
+            <a href="/registro/" class="btn registrarse">Registro Digital</a>
+        </div>
+    </div>
+</body>
+
+</html>
