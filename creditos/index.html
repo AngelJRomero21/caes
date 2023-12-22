@@ -16,7 +16,8 @@
     }
 
     input[type="text"],
-    input[type="number"] {
+    input[type="number"],
+    select {
       width: 100%;
       padding: 8px;
       margin-bottom: 15px;
@@ -35,6 +36,20 @@
 
     button:hover {
       background-color: #0056b3;
+    }
+
+    /* Estilos para pantallas más pequeñas */
+    @media only screen and (max-width: 600px) {
+      body {
+        margin: 10px;
+      }
+      input[type="text"],
+      input[type="number"],
+      select,
+      button {
+        width: 100%;
+        margin-bottom: 10px;
+      }
     }
   </style>
 </head>
