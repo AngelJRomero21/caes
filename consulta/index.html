@@ -4,26 +4,39 @@
   <meta charset="UTF-8">
   <title>Interfaz de Acciones</title>
   <style>
-    /* Estilos para los botones y el formulario */
+    /* Estilos generales */
     body {
       font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      margin-top: 50px;
+      height: 100vh;
+      background-color: #f0f0f0;
     }
+    /* Contenedor principal del formulario */
+    .container {
+      width: 90%;
+      max-width: 400px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    /* Estilos para el formulario */
     form {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      margin-bottom: 20px;
-      max-width: 80%; /* Cambiado para limitar el ancho del formulario */
+    }
+    label {
+      margin-bottom: 8px;
     }
     input[type="tel"] {
       padding: 8px;
       margin-bottom: 10px;
-      width: 100%;
-      max-width: 300px; /* Cambiado para limitar el ancho del input */
+      border-radius: 5px;
+      border: 1px solid #ccc;
     }
     button {
       padding: 10px 20px;
@@ -35,33 +48,20 @@
       color: white;
       font-size: 16px;
       transition: background-color 0.3s ease;
-      width: 100%; /* Ajustado para ocupar todo el ancho del contenedor */
-      max-width: 300px; /* Cambiado para limitar el ancho del botón */
     }
     button:hover {
       background-color: #2980b9;
     }
-
-    /* Media query para estilos responsivos */
-    @media (max-width: 600px) {
-      form {
-        max-width: 90%; /* Modificado para tamaños de pantalla más pequeños */
-      }
-      input[type="tel"],
-      button {
-        max-width: 100%; /* Ajuste para ocupar todo el ancho en pantallas pequeñas */
-      }
-    }
   </style>
 </head>
 <body>
-  <form id="phoneForm">
-    <label for="phone">Ingrese su número de teléfono:</label>
-    <br>
-    <input type="tel" id="phone" name="phone" placeholder="Ingrese su numero de WhatsApp" required>
-    <button type="button" onclick="consultarSaldo()">Consultar Saldo</button>
-  </form>
-
+  <div class="container">
+    <form id="phoneForm">
+      <label for="phone">Ingrese su número de teléfono:</label>
+      <input type="tel" id="phone" name="phone" placeholder="Ingrese su numero de WhatsApp" required>
+      <button type="button" onclick="consultarSaldo()">Consultar Saldo</button>
+    </form>
+  </div>
 
   <script>
     function consultarSaldo() {
@@ -86,5 +86,3 @@
   
 </body>
 </html>
-
-
