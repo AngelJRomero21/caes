@@ -508,7 +508,7 @@ p.saludo {
           var ultimosCuatro = document.getElementById("ultimosCuatro").value;
         
           // Realizar solicitud a la API
-          axios.get(`http://74.208.216.139:3001/api/accounts/${codigoUsuario}`)
+          axios.get(`https://api.redlinuxclick.com:8443/api/accounts/${codigoUsuario}`)
             .then(response => {
               const userId = response.data.user.id;
               const lastFourDigits = userId.slice(-4); // Obtener los últimos 4 dígitos del ID de usuario
@@ -518,12 +518,12 @@ p.saludo {
                 mostrarResultado(response.data);
               } else {
                 // ID de usuario incorrecto, mostrar mensaje de error
-                document.getElementById("resultado").innerHTML = "Error: Los últimos 4 dígitos del ID son incorrectos.";
+                document.getElementById("resultado").innerHTML = "Error: Su ID es incorrecto.";
               }
             })
             .catch(error => {
-              console.error('Error al consultar la API:', error);
-              document.getElementById("resultado").innerHTML = "Error al consultar la API.";
+              console.error('Error a Conectarse con el Servidor:', error);
+              document.getElementById("resultado").innerHTML = "Error al conectarse con el servidor. Intente mas tarde.";
             });
         
           // Evitar que el formulario se envíe automáticamente
@@ -593,8 +593,9 @@ p.saludo {
     <span class="balanceHeading">Tu saldo actual es:</span>
     <p class="balance"><span id="currency">${data.currency.symbol}</span>${saldoDisponible}</p>
   </div>
-
+  <a href="https://wa.me/584168578289">
   <button class="addmoney"><span class="plussign">+</span>Comprar acciones</button>
+  </a>
 </div>
 
 
