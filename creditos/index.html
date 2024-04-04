@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <title>Calculadora de Créditos - CAJA AGRICOLA EMPRENDEDORES DE SICOQUE</title>
@@ -11,7 +12,7 @@
     <meta property="og:image" content="https://caes.cromstudio.com.ve/img/logo1.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HEMCJ07X1Z"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -20,9 +21,434 @@
 
   gtag('config', 'G-HEMCJ07X1Z');
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <title>CAJA AGRICOLA EMPRENDEDO</title>
+    <style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f9f9f9;
+}
 
-  
-  <style>
+.flex-caes {
+
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.img-izq {
+    width: 60%;
+}
+
+
+.img-izq img {
+    height: 100vh;
+    object-fit: cover;
+    width: 100%;
+}
+.container {
+    text-align: center;
+    width: 40%;
+}
+.container-two {
+    width: 90%;
+    margin: auto;
+
+
+}
+
+.logo {
+    max-width: 250px;
+    height: auto;
+    width: 100%;    
+    padding-bottom: 30px;
+
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 300px;
+    margin: 0 auto;
+    max-width: 100%;
+    flex-direction: row;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn {
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    display: block;
+    width: fit-content;
+}
+
+.btn:hover {
+    filter: brightness(0.9);
+}
+
+.consultar {
+    background-color: #3498db;
+    color: white;
+}
+
+.calcular {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.registrarse {
+    background-color: #e74c3c;
+    color: white;
+}
+
+
+/* */
+
+.button svg {
+    max-width: 30px;
+    width: 100%;
+    max-height: 30px;
+
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+  gap: 5px;
+  background-color: #007ACC;
+  outline: 3px #007ACC solid;
+  outline-offset: -3px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: 400ms;
+  width: 160px;
+}
+
+.button .text {
+  color: white;
+  font-weight: 700;
+  font-size: 12px;
+  transition: 400ms;
+}
+
+.button svg path {
+  transition: 400ms;
+}
+
+.button:hover {
+  background-color: transparent;
+}
+
+.button:hover .text {
+  color: #ffffff;
+}
+
+.button:hover svg path {
+  fill: #ffffff;
+}
+.button.csls{
+    background-color: #357f26;
+    outline: 3px #357f26 solid;
+}
+.button.calccred{
+    background-color: #e49c2c;
+    outline: 3px #e49c2c solid;
+}
+.button.regdig{
+    background-color: #327ef9;
+    outline: 3px #327ef9 solid;
+}
+
+a{
+    text-decoration: none;
+
+}
+/* */
+
+
+/**/
+
+
+.walletBalanceCard {
+    max-width: 400px;
+    width: 100%;
+  height: 110px;
+  background-color: #1c1f2f;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 0px 12px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.svgwrapper {
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.svgwrapper svg {
+  width: 100%;
+}
+.balancewrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 180px;
+  gap: 0px;
+}
+.balanceHeading {
+  font-size: 16px;
+  color: rgb(214, 214, 214);
+  font-weight: 100;
+  letter-spacing: 0.6px;
+}
+.balance {
+  font-size: 22px;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.addmoney {
+  padding: 1px 10px;
+  border-radius: 7px;
+  background-color: #357f26;
+  color: white;
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-weight: 700;
+}
+.addmoney:hover {
+  background-color: whitesmoke;
+  color: #357f26;
+}
+.plussign {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+div#resultado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+div#resultado img {
+    max-width: 200px;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    object-position: center;
+    border: 6px solid #357f26;
+}
+.hide{
+    display: none !important;
+}
+p.saludo {
+    margin-bottom: 0;
+}
+.nombre {
+    font-size: 20px;
+    font-weight: bold;
+}
+/**/
+
+/* formulario */
+
+.form_main {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+  padding: 30px 30px 30px 30px;
+  border-radius: 30px;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.062);
+}
+
+.heading {
+  font-size: 25px;
+  color: #2e2e2e;
+  font-weight: 700;
+  margin: 15px 0 30px 0;
+}
+
+.inputContainer {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 10px;
+}
+
+.inputField {
+  width: 100%;
+  height: 40px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid rgb(173, 173, 173);
+  border-radius: 30px;
+  margin: 10px 0;
+  color: black;
+  font-size: .8em;
+  font-weight: 500;
+  box-sizing: border-box;
+  padding-left: 30px;
+}
+
+.inputField:focus {
+  outline: none;
+  border-bottom: 2px solid #357f26;
+}
+
+.inputField::placeholder {
+  color: rgb(80, 80, 80);
+  font-size: 1em;
+  font-weight: 500;
+}
+
+#button {
+  position: relative;
+  width: 100%;
+  border: 2px solid #357f26;
+  background-color: #357f26;
+  height: 40px;
+  color: white;
+  font-size: .8em;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border-radius: 30px;
+  margin: 10px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+#button::after {
+  content: "";
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.253);
+  height: 100%;
+  width: 150px;
+  top: 0;
+  left: -200px;
+  border-bottom-right-radius: 100px;
+  border-top-left-radius: 100px;
+  filter: blur(10px);
+  transition-duration: .5s;
+}
+
+#button:hover::after {
+  transform: translateX(600px);
+  transition-duration: .5s;
+}
+
+.signupContainer {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.signupContainer p {
+  font-size: .9em;
+  font-weight: 500;
+  color: black;
+}
+
+.signupContainer a {
+  font-size: .7em;
+  font-weight: 500;
+  background-color: #2e2e2e;
+  color: white;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+}
+.formloginusr {
+    display: flex;
+    justify-content: center;
+}
+
+
+/* formulario */
+@media screen and (min-width: 480px) and (max-width: 1240px) {
+    .options {
+        flex-direction: column;
+
+    }
+
+}
+@media (max-width: 480px) {
+    .btn {
+        padding: 12px;
+        font-size: 1rem;
+    }
+    .img-izq {
+        display: none;
+    }
+    .container {
+        width: 100%;
+    }
+    .options {
+        flex-direction: column;
+
+    }
+    .walletBalanceCard{
+        flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 20px 0;
+    }
+
+    .balancewrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 180px;
+    gap: 0px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+}
     /* Estilos CSS */
     body {
       font-family: Arial, sans-serif;
@@ -71,540 +497,71 @@
         margin-bottom: 10px;
       }
     }
-  </style>
+
+        </style>
 </head>
+
 <body>
-  <h1 style="text-align: center;">Calculadora de Créditos</h1>
-  <form id="creditCalculator">
-    <div>
-      <label for="numCuenta">Número de Cuenta:</label>
-      <input type="text" id="numCuenta" name="numCuenta" required>
+    <div class="flex-caes">   
+        <div class="container">
+            <div class="container-two">
+              <h1 style="text-align: center;">Calculadora de Créditos</h1>
+              <form id="creditCalculator">
+                <div>
+                  <label for="monto">Monto:</label>
+                  <input type="number" id="monto" name="monto" min="1" step="any" required>
+                </div>
+                <div>
+                  <label for="meses">Meses:</label>
+                  <input type="number" id="meses" name="meses" min="1" required>
+                </div>
+                <br>
+                <button type="button" onclick="calcularInteres()">Calcular Interés</button>
+              </form>
+            
+              <div id="resultado"></div>
+              
+                </div>
+            </div>   
+        </div>
+        <div class="img-izq">
+            <img src="https://caes.cromstudio.com.ve/img/caes-fondo.jpeg" alt="Fondo">
+        </div>
     </div>
-    <div>
-      <label for="monto">Monto:</label>
-      <input type="number" id="monto" name="monto" min="1" step="any" required>
-    </div>
-    <div>
-      <label for="meses">Meses:</label>
-      <input type="number" id="meses" name="meses" min="1" required>
-    </div>
-    <div>
-      <label for="motivo">Motivo:</label>
-      <select id="motivo" name="motivo">
-        <option value="agricultura">Agricultura</option>
-        <option value="ciencias">Ciencias y Tecnologia</option>
-        <option value="compra de maquinaria">Compra de Maquinaria</option>
-        <option value="educación">Educación</option>
-        <option value="mejora de vivienda">Mejora de Vivienda</option>
-        <option value="crecimiento de negocio">Crecimiento de Negocio</option>
-        <option value="renovación de inventario">Renovación de Inventario</option>
-        <option value="cobertura de gastos médicos">Cobertura de Gastos Médicos</option>
-        <option value="expansión de operaciones">Expansión de Operaciones</option>
-        <option value="inversión en tecnología">Inversión en Tecnología</option>
-        <option value="capital de trabajo">Capital de Trabajo</option>
-        <option value="desarrollo de producto">Desarrollo de Producto</option>
-        <option value="apertura de sucursal">Apertura de Sucursal</option>
-        <option value="financiamiento de exportaciones">Financiamiento de Exportaciones</option>
-        <option value="eventos y espectáculos">Eventos y Espectáculos</option>
-        <option value="transporte y logística">Transporte y Logística</option>
-        <option value="marketing y publicidad">Marketing y Publicidad</option>
-        <option value="reparación de vehículos">Reparación de Vehículos</option>
-        <option value="proyectos de investigación">Proyectos de Investigación</option>
-        <option value="inicio de negocio">Inicio de Negocio</option>
-        <option value="reducción de deudas">Reducción de Deudas</option>
-        <option value="viajes y turismo">Viajes y Turismo</option>
-        <option value="suministros de oficina">Suministros de Oficina</option>
-        <option value="mantenimiento de equipos">Mantenimiento de Equipos</option>
-        <option value="innovación y desarrollo">Innovación y Desarrollo</option>
-        <option value="cuidado de la salud">Cuidado de la Salud</option>
-        <option value="renovación de licencias">Renovación de Licencias</option>
-        <option value="diversificación de productos">Diversificación de Productos</option>
-        <option value="contratación de personal">Contratación de Personal</option>
-        <option value="seguridad y protección">Seguridad y Protección</option>
-        <option value="servicios profesionales">Servicios Profesionales</option>
-        <option value="ampliación de instalaciones">Ampliación de Instalaciones</option>
-        <option value="servicios de consultoría">Servicios de Consultoría</option>
-        <option value="software y aplicaciones">Software y Aplicaciones</option>
-        <option value="reparaciones y mantenimiento">Reparaciones y Mantenimiento</option>
-        <option value="energías renovables">Energías Renovables</option>
-        <option value="cobertura de nómina">Cobertura de Nómina</option>
-        <option value="expansión internacional">Expansión Internacional</option>
-        <option value="formación y capacitación">Formación y Capacitación</option>
-        <option value="servicios de limpieza">Servicios de Limpieza</option>
-        <option value="adquisición de franquicias">Adquisición de Franquicias</option>
-        <option value="mercadeo en línea">Mercadeo en Línea</option>
-        <option value="remodelación de espacios">Remodelación de Espacios</option>
-        <option value="servicios de asesoramiento">Servicios de Asesoramiento</option>
-        <option value="sostenibilidad ambiental">Sostenibilidad Ambiental</option>
-        <option value="inventario y almacenamiento">Inventario y Almacenamiento</option>
-        <option value="servicios financieros">Servicios Financieros</option>
-        <option value="inversiones inmobiliarias">Inversiones Inmobiliarias</option>
-        <option value="cuidado infantil">Cuidado Infantil</option>
-        <option value="expansión de líneas de producto">Expansión de Líneas de Producto</option>
-        <option value="contratación de freelancers">Contratación de Freelancers</option>
-        <option value="equipos de seguridad">Equipos de Seguridad</option>
-        <option value="servicios de entrega">Servicios de Entrega</option>
-        <option value="servicios de telecomunicaciones">Servicios de Telecomunicaciones</option>
-        <option value="compra de acciones">Compra de Acciones</option>
-        <option value="protección de propiedad intelectual">Protección de Propiedad Intelectual</option>
-        <option value="divulgación y relaciones públicas">Divulgación y Relaciones Públicas</option>
-        <option value="adquisición de materiales">Adquisición de Materiales</option>
-        <option value="gestión de residuos">Gestión de Residuos</option>
-        <option value="servicios de contabilidad">Servicios de Contabilidad</option>
-        <option value="publicidad en redes sociales">Publicidad en Redes Sociales</option>
-        <option value="innovación en diseño">Innovación en Diseño</option>
-        <option value="contratación de aprendices">Contratación de Aprendices</option>
-        <option value="adquisición de equipos médicos">Adquisición de Equipos Médicos</option>
-        <option value="recursos humanos">Recursos Humanos</option>
-        <option value="desarrollo de mercado">Desarrollo de Mercado</option>
-        <option value="adquisición de vehículos">Adquisición de Vehículos</option>
-        <option value="planificación de eventos">Planificación de Eventos</option>
-        <option value="cobertura de gastos operativos">Cobertura de Gastos Operativos</option>
-        <option value="servicios de diseño gráfico">Servicios de Diseño Gráfico</option>
-        <option value="proyectos de arte">Proyectos de Arte</option>
-        <option value="servicios de reparación">Servicios de Reparación</option>
-        <option value="creación de infraestructura">Creación de Infraestructura</option>
-        <option value="marketing de contenido">Marketing de Contenido</option>
-        <option value="servicios de tecnología">Servicios de Tecnología</option>
-        <option value="planificación financiera">Planificación Financiera</option>
-        <option value="compra de inventario">Compra de Inventario</option>
-        <option value="expansión de marca">Expansión de Marca</option>
-        <option value="creación de alianzas">Creación de Alianzas</option>
-        <option value="proyectos de construcción">Proyectos de Construcción</option>
-        <option value="mercados emergentes">Mercados Emergentes</option>
-        <option value="servicios de mantenimiento">Servicios de Mantenimiento</option>
-        <option value="pagos a proveedores">Pagos a Proveedores</option>
-        <option value="servicios de ingeniería">Servicios de Ingeniería</option>
-        <option value="servicios de restauración">Servicios de Restauración</option>
-        <option value="gestión de proyectos">Gestión de Proyectos</option>
-        <option value="publicidad impresa">Publicidad Impresa</option>
-        <option value="contratación de personal técnico">Contratación de Personal Técnico</option>
-        <option value="promociones y descuentos">Promociones y Descuentos</option>
-        <option value="desarrollo de aplicaciones móviles">Desarrollo de Aplicaciones Móviles</option>
-        <option value="expansión de capacidad de producción">Expansión de Capacidad de Producción</option>
-        <option value="reducción de costos">Reducción de Costos</option>
-        <option value="proyectos de infraestructura">Proyectos de Infraestructura</option>
-        <option value="publicidad en línea">Publicidad en Línea</option>
-        <option value="servicios de traducción">Servicios de Traducción</option>
-        <option value="estudios de mercado">Estudios de Mercado</option>
-        <option value="producción de eventos">Producción de Eventos</option>
-        <option value="estrategias de mercadotecnia">Estrategias de Mercadotecnia</option>
-        <option value="servicios de seguridad cibernética">Servicios de Seguridad Cibernética</option>
-        <option value="ampliación de servicios">Ampliación de Servicios</option>
-        <option value="servicios de construcción">Servicios de Construcción</option>
-        <option value="investigación y desarrollo">Investigación y Desarrollo</option>
-        <option value="servicios de fotografía">Servicios de Fotografía</option>
-        <option value="servicios de diseño web">Servicios de Diseño Web</option>
-        <option value="programas de recompensas">Programas de Recompensas</option>
-        <option value="servicios de telecomunicaciones">Servicios de Telecomunicaciones</option>
-        <option value="equipamiento médico">Equipamiento Médico</option>
-        <option value="patrocinios y donaciones">Patrocinios y Donaciones</option>
-        <option value="servicios de manejo de datos">Servicios de Manejo de Datos</option>
-        <option value="instalaciones industriales">Instalaciones Industriales</option>
-        <option value="servicios de mantenimiento">Servicios de Mantenimiento</option>
-        <option value="mercados en línea">Mercados en Línea</option>
-        <option value="diseño de productos">Diseño de Productos</option>
-        <option value="servicios de diseño industrial">Servicios de Diseño Industrial</option>
-        <option value="estrategias de crecimiento">Estrategias de Crecimiento</option>
-        <option value="gestión de logística">Gestión de Logística</option>
-        <option value="campañas de sensibilización">Campañas de Sensibilización</option>
-        <option value="publicidad en medios">Publicidad en Medios</option>
-        <option value="administración de eventos">Administración de Eventos</option>
-        <option value="servicios de diseño arquitectónico">Servicios de Diseño Arquitectónico</option>
-        <option value="servicios de diseño de interiores">Servicios de Diseño de Interiores</option>
-        <option value="desarrollo de habilidades">Desarrollo de Habilidades</option>
-        <option value="promociones de ventas">Promociones de Ventas</option>
-        <option value="servicios de reparación de computadoras">Servicios de Reparación de Computadoras</option>
-        <option value="distribución de productos">Distribución de Productos</option>
-        <option value="consultoría de gestión">Consultoría de Gestión</option>
-        <option value="publicidad en televisión">Publicidad en Televisión</option>
-        <option value="servicios de diseño de moda">Servicios de Diseño de Moda</option>
-        <option value="cursos y talleres">Cursos y Talleres</option>
-        <option value="servicios de seguridad personal">Servicios de Seguridad Personal</option>
-        <option value="campañas de responsabilidad social">Campañas de Responsabilidad Social</option>
-        <option value="servicios de catering">Servicios de Catering</option>
-        <option value="desarrollo de marca">Desarrollo de Marca</option>
-        <option value="servicios de consultoría legal">Servicios de Consultoría Legal</option>
-        <option value="servicios de ingeniería civil">Servicios de Ingeniería Civil</option>
-        <option value="logística de transporte">Logística de Transporte</option>
-        <option value="servicios de consultoría empresarial">Servicios de Consultoría Empresarial</option>
-        <option value="servicios de manejo de residuos">Servicios de Manejo de Residuos</option>
-        <option value="capacitación empresarial">Capacitación Empresarial</option>
-        <option value="servicios de diseño de logotipo">Servicios de Diseño de Logotipo</option>
-        <option value="publicidad en vallas publicitarias">Publicidad en Vallas Publicitarias</option>
-        <option value="marketing de afiliación">Marketing de Afiliación</option>
-        <option value="servicios de diseño de producto">Servicios de Diseño de Producto</option>
-        <option value="servicios de control de plagas">Servicios de Control de Plagas</option>
-        <option value="consultoría de recursos humanos">Consultoría de Recursos Humanos</option>
-        <option value="servicios de diseño de marca">Servicios de Diseño de Marca</option>
-        <option value="conferencias y seminarios">Conferencias y Seminarios</option>
-        <option value="servicios de consultoría financiera">Servicios de Consultoría Financiera</option>
-        <option value="servicios de consultoría de marketing">Servicios de Consultoría de Marketing</option>
-        <option value="publicidad en medios digitales">Publicidad en Medios Digitales</option>
-        <option value="reconocimientos y premios">Reconocimientos y Premios</option>
-        <option value="servicios de reparación de electrodomésticos">Servicios de Reparación de Electrodomésticos</option>
-        <option value="soluciones de software empresarial">Soluciones de Software Empresarial</option>
-        <option value="proyectos de reforestación">Proyectos de Reforestación</option>
-        <option value="servicios de pintura y decoración">Servicios de Pintura y Decoración</option>
-        <option value="servicios de asesoramiento financiero">Servicios de Asesoramiento Financiero</option>
-      </select>
-    </div>
-    <br>
-    <button type="button" onclick="calcularInteres()">Calcular Interés</button>
-  </form>
 
-  <div id="resultado"></div>
-
-  <script>
-    function calcularInteres() {
-      const monto = parseFloat(document.getElementById('monto').value);
-      const meses = parseInt(document.getElementById('meses').value);
-      const tasaInteres = 7; // Tasa de interés mensual del 6.5%
-      const interesPorMes = (monto * tasaInteres / 100) * meses;
-      const totalPagar = monto + interesPorMes;
-
-      const motivoSeleccionado = document.getElementById('motivo').value;
-      let motivoTexto = '';
-      if (motivoSeleccionado === 'agricultura') {
-        motivoTexto = 'Agricultura';
-      } else if (motivoSeleccionado === 'siembra') {
-        motivoTexto = 'Siembra';
-      } else if (motivoSeleccionado === 'ciencias') {
-        motivoTexto = 'Ciencias';
-      } else if (motivoSeleccionado === 'compra de maquinaria') {
-        motivoTexto = 'Compra de Maquinaria';
-    } else if (motivoSeleccionado === 'educación') {
-        motivoTexto = 'Educación';
-      } else if (motivoSeleccionado === 'mejora de vivienda') {
-        motivoTexto = 'Mejora de Vivienda';
-      } else if (motivoSeleccionado === 'crecimiento de negocio') {
-        motivoTexto = 'Crecimiento de Negocio';
-      } else if (motivoSeleccionado === 'renovacion de inventario') {
-        motivoTexto = '}Renovacion de Inventario';
-      } else if (motivoSeleccionado === 'covertura de gastos médicos') {
-        motivoTexto = 'Covertura de Gastos Médicos';
-      } else if (motivoSeleccionado === 'expansión de operaciones') {
-        motivoTexto = 'Expansión de Operaciones';
-      } else if (motivoSeleccionado === 'inversión en tecnología') {
-        motivoTexto = 'Inversión en Tecnología';
-      } else if (motivoSeleccionado === 'capital de trabajo') {
-        motivoTexto = 'Capital de Trabajo';
-      } else if (motivoSeleccionado === 'desarrollo de producto') {
-        motivoTexto = 'Desarrollo de Producto';
-      } else if (motivoSeleccionado === 'apertura de sucursal') {
-        motivoTexto = 'Apertura de Sucursal';
-      } else if (motivoSeleccionado === 'financiamiento de exportaciones') {
-        motivoTexto = 'Financiamiento de Exportaciones';
-      } else if (motivoSeleccionado === 'eventos y espéctaculos') {
-        motivoTexto = 'Eventos y Espéctaculos';
-      } else if (motivoSeleccionado === 'transporte y logísticas') {
-        motivoTexto = 'Transporte y Logísticas';
-      } else if (motivoSeleccionado === 'marketing y publicidad') {
-        motivoTexto = 'Marketing y Publicidad';
-      } else if (motivoSeleccionado === 'reparación de vehículos') {
-        motivoTexto = 'Reparación de Vehículos';
-      } else if (motivoSeleccionado === 'proyectos de investigación') {
-        motivoTexto = '´Proyectos de Investigación';
-      } else if (motivoSeleccionado === 'inicio de negocio') {
-        motivoTexto = 'Inicio de Negocio';
-      } else if (motivoSeleccionado === 'reducción de deudas') {
-        motivoTexto = 'Reducción de Deudas ';
-      } else if (motivoSeleccionado === 'viajes y turismo') {
-        motivoTexto = 'Viajes y Turismo';
-      } else if (motivoSeleccionado === 'suministros de oficina') {
-        motivoTexto = 'Suministros de Oficina';
-      } else if (motivoSeleccionado === 'mantenimiento de equipos') {
-        motivoTexto = 'Mantenimiento de Equipos';
-      } else if (motivoSeleccionado === 'innovación y desarrollo') {
-        motivoTexto = 'Innovación y Desarrollo';
-      } else if (motivoSeleccionado === 'cuidado de la salud') {
-        motivoTexto = 'Cuidado de la Salud';
-      } else if (motivoSeleccionado === 'renovación de licencias') {
-        motivoTexto = 'Renovación de Licencias';
-      } else if (motivoSeleccionado === 'diversificación de productos') {
-        motivoTexto = 'Diversificación de productos';
-      } else if (motivoSeleccionado === 'contratación de personal') {
-        motivoTexto = 'Contratación de Personal';
-      } else if (motivoSeleccionado === 'seguridad y protección') {
-        motivoTexto = 'Seguridad y Protección';
-      } else if (motivoSeleccionado === 'servicios profesionales') {
-        motivoTexto = 'Servicios Profesionales';
-      } else if (motivoSeleccionado === 'ampliación de instalaciones') {
-        motivoTexto = 'Ampliación de Instalaciones';
-      } else if (motivoSeleccionado === 'servicios de consultoría') {
-        motivoTexto = 'Servicios de Consultoría';
-      } else if (motivoSeleccionado === 'software y aplicaciones') {
-        motivoTexto = 'Software y Aplicaciones';
-      } else if (motivoSeleccionado === 'reparaciones y mantenimiento') {
-        motivoTexto = 'Reparaciones y Mantenimiento';
-      } else if (motivoSeleccionado === 'energías renovables') {
-        motivoTexto = 'Energías Renovables';
-      } else if (motivoSeleccionado === 'cobertura de nómina') {
-        motivoTexto = 'Cobertura de Nómina';
-      } else if (motivoSeleccionado === 'expansión internacional') {
-        motivoTexto = 'Expansión Internacional';
-      } else if (motivoSeleccionado === 'formación y capacitación') {
-        motivoTexto = 'Formación y Capacitación';
-      } else if (motivoSeleccionado === 'servicios de limpieza') {
-        motivoTexto = 'Servicios de Limpieza';
-      } else if (motivoSeleccionado === 'adquisición de franquicias') {
-        motivoTexto = 'Adquisición de Franquicias';
-      } else if (motivoSeleccionado === 'mercadeo en línea') {
-        motivoTexto = 'Mercadeo en Línea';
-      } else if (motivoSeleccionado === 'remodelación de espacios') {
-        motivoTexto = 'Remodelación de Espacios';
-      } else if (motivoSeleccionado === 'servicios de asesoramiento') {
-        motivoTexto = 'Servicios de Asesoramiento';
-      } else if (motivoSeleccionado === 'sostenibilidad ambiental') {
-        motivoTexto = 'Sostenibilidad Ambiental';
-      } else if (motivoSeleccionado === 'inventario y almacenamiento') {
-        motivoTexto = 'Inventario y Almacenamiento';
-      } else if (motivoSeleccionado === 'servicios financieros') {
-        motivoTexto = 'Servicios Financieros';
-      } else if (motivoSeleccionado === 'inversiones inmobiliarias') {
-        motivoTexto = 'Inversiones Inmobiliarias';
-      } else if (motivoSeleccionado === 'cuidado infantil') {
-        motivoTexto = 'Cuidado Infantil';
-      } else if (motivoSeleccionado === 'expansión de líneas de producto') {
-        motivoTexto = 'Expansión de Líneas de Producto';
-      } else if (motivoSeleccionado === 'contratación de freelancers') {
-        motivoTexto = 'Contratación de Freelancers';
-      } else if (motivoSeleccionado === 'equipos de seguridad') {
-        motivoTexto = 'Equipos de Seguridad';
-      } else if (motivoSeleccionado === 'servicios de entrega') {
-        motivoTexto = 'Servicios de Entrega';
-      } else if (motivoSeleccionado === 'servicios de telecomunicaciones') {
-        motivoTexto = 'Servicios de Telecomunicaciones';
-      } else if (motivoSeleccionado === 'compra de acciones ') {
-        motivoTexto = 'Compra de Acciones';
-      } else if (motivoSeleccionado === 'protección de propiedad intelectual ') {
-        motivoTexto = 'Protección de Propiedad Intelectual';
-      } else if (motivoSeleccionado === 'divulgacion y relaciones públicas') {
-        motivoTexto = 'Dibulgación y Relaciones Públicas';
-      } else if (motivoSeleccionado === 'adquisición de materiales') {
-        motivoTexto = 'Adquisición de Materiales';
-      } else if (motivoSeleccionado === 'gestión de residuos') {
-        motivoTexto = 'Gestión de Residuos';
-      } else if (motivoSeleccionado === 'servicios de contabilidad') {
-        motivoTexto = 'Servicios de Contabilidad';
-      } else if (motivoSeleccionado === 'publicidad en redes sociales') {
-        motivoTexto = 'Publicidad en Redes Sociales';
-      } else if (motivoSeleccionado === 'innovación en diseño') {
-        motivoTexto = 'Innovación en Diseño';
-      } else if (motivoSeleccionado === 'contratación de aprendices') {
-        motivoTexto = 'Contratación de Aprendices';
-      } else if (motivoSeleccionado === 'adquisición de equipos médicos') {
-        motivoTexto = 'Adquisición de Equipos Médicos';
-      } else if (motivoSeleccionado === 'recursos humanos') {
-        motivoTexto = 'Recursos Humanos';
-      } else if (motivoSeleccionado === 'desarrollo de mercado') {
-        motivoTexto = 'Desarrollo de Mercado';
-      } else if (motivoSeleccionado === 'adquisición de vehículos') {
-        motivoTexto = 'Adquisición de Vehículos';
-      } else if (motivoSeleccionado === 'planificación de eventos') {
-        motivoTexto = 'Planificación de Eventos';
-      } else if (motivoSeleccionado === 'covertura de gastos operativos') {
-        motivoTexto = 'Covertura de Gastos Operativos';
-      } else if (motivoSeleccionado === 'servicios de diseño gráfico') {
-        motivoTexto = 'Servicios de Diseño Gráfico';
-      } else if (motivoSeleccionado === 'proyectos de arte') {
-        motivoTexto = 'Proyectos de Arte';
-      } else if (motivoSeleccionado === 'servicios de reparación') {
-        motivoTexto = 'Servicios de Reparación';
-      } else if (motivoSeleccionado === 'creación de infraestructura') {
-        motivoTexto = 'Creación de Infraestructura';
-      } else if (motivoSeleccionado === 'marketing de contenido') {
-        motivoTexto = 'Marketing de Contenido';
-      } else if (motivoSeleccionado === 'servicios de tecnología') {
-        motivoTexto = 'Servicios de Tecnología';
-      } else if (motivoSeleccionado === 'planificación financiera') {
-        motivoTexto = 'Planificación Financiera';
-      } else if (motivoSeleccionado === 'compra de inventario') {
-        motivoTexto = 'Compra de Inventario';
-      } else if (motivoSeleccionado === 'expansión de marca') {
-        motivoTexto = 'Expansión de Marca';
-      } else if (motivoSeleccionado === 'creación de alianzas') {
-        motivoTexto = 'Creación de Alianzas';
-      } else if (motivoSeleccionado === 'proyectos de construcción') {
-        motivoTexto = 'Proyectos de Construcción';
-      } else if (motivoSeleccionado === 'mercados emergentes') {
-        motivoTexto = 'Mercados Emergentes';
-      } else if (motivoSeleccionado === 'servicios de mantenimiento ') {
-        motivoTexto = 'Servicios de Mantenimiento';
-      } else if (motivoSeleccionado === 'pagos a proveedores') {
-        motivoTexto = 'Pagos a Proveedores';
-      } else if (motivoSeleccionado === 'servicios de mantenimiento') {
-        motivoTexto = 'Servicios de Mantenimiento';
-      } else if (motivoSeleccionado === 'pagos a proveedores') {
-        motivoTexto = 'Pagos a Proveedores';
-      } else if (motivoSeleccionado === 'servicios de ingeniería') {
-        motivoTexto = 'Servicios de Ingeniería';
-      } else if (motivoSeleccionado === 'servicios de restauración') {
-        motivoTexto = 'Servicios de Restauración';
-      } else if (motivoSeleccionado === 'gestión de proyectos') {
-        motivoTexto = 'Gestión de Proyectos';
-      } else if (motivoSeleccionado === 'publicidad impresa') {
-        motivoTexto = 'Publicidad Impresa';
-      } else if (motivoSeleccionado === 'contratación de personal técnico') {
-        motivoTexto = 'Contratación de Personal Técnico';
-      } else if (motivoSeleccionado === 'promociones y descuentos') {
-        motivoTexto = 'Promociones y Descuentos';
-      } else if (motivoSeleccionado === 'desarrollo de aplicaciones móviles') {
-        motivoTexto = 'Desarrollo de Aplicaciones Móviles';
-      } else if (motivoSeleccionado === 'expansión de capacidad de producción') {
-        motivoTexto = 'Expansión de Capacidad de Producción';
-      } else if (motivoSeleccionado === 'reducción de costos') {
-        motivoTexto = 'Reducción de Costos';
-      } else if (motivoSeleccionado === 'proyectos de infraestructura') {
-        motivoTexto = 'Proyectos de Infraestructura';
-      } else if (motivoSeleccionado === 'publicidad en línea') {
-        motivoTexto = 'Publicidad en Línea';
-      } else if (motivoSeleccionado === 'servicios de traducción') {
-        motivoTexto = 'Servicios de Traducción';
-      } else if (motivoSeleccionado === 'estudios de mercado') {
-        motivoTexto = 'Estudios de Mercado';
-      } else if (motivoSeleccionado === 'producción de enventos') {
-        motivoTexto = 'Producción de Eventos';
-      } else if (motivoSeleccionado === 'estrategia de mercadotecnia') {
-        motivoTexto = 'Estartegias de Mercadotecnia';
-      } else if (motivoSeleccionado === 'servicios de seguridad cibernética') {
-        motivoTexto = 'Servicios de Seguridad Cibernética';
-      } else if (motivoSeleccionado === 'ampliación de servicios') {
-        motivoTexto = 'Ampliación de Servicios';
-      } else if (motivoSeleccionado === 'servicios de construccción') {
-        motivoTexto = 'Servicios de Construcción';
-      } else if (motivoSeleccionado === 'investigación y desarrollo') {
-        motivoTexto = 'Investigación y Desarrollo';
-      } else if (motivoSeleccionado === 'servicios de fotografía') {
-        motivoTexto = 'Servicios de Fotografía';
-      } else if (motivoSeleccionado === 'servicios de diseño web') {
-        motivoTexto = 'Servicios de Diseño Web';
-      } else if (motivoSeleccionado === 'programas de recompensas') {
-        motivoTexto = 'Programas de Recompensas';
-      } else if (motivoSeleccionado === 'servicios de telecomunicaciones') {
-        motivoTexto = 'Servicios de Telecomunicaciones';
-      } else if (motivoSeleccionado === 'equipamiento médico') {
-        motivoTexto = 'Equipamiento Medico';
-      } else if (motivoSeleccionado === 'patrocinios y donaciones') {
-        motivoTexto = 'Patrocinios y Donaciones';
-      } else if (motivoSeleccionado === 'servicios de manejo de datos') {
-        motivoTexto = 'Servicios de Manejo de Datos';
-      } else if (motivoSeleccionado === 'instalaciones industriales') {
-        motivoTexto = 'Instalaciones Industriales';
-      } else if (motivoSeleccionado === 'servicios de mantenimiento') {
-        motivoTexto = 'Servicios de Mantenimiento';
-      } else if (motivoSeleccionado === 'mercados en línea') {
-        motivoTexto = 'Mercados en Línea';
-      } else if (motivoSeleccionado === 'diseño de productos') {
-        motivoTexto = 'Diseño de Productos';
-      } else if (motivoSeleccionado === 'servicios de diseño industrial') {
-        motivoTexto = 'Servicios de Diseño Industrial';
-      } else if (motivoSeleccionado === 'estrategias de crecimiento') {
-        motivoTexto = 'Estrategia de Crecimiento';
-      } else if (motivoSeleccionado === 'gestión de logística') {
-        motivoTexto = 'Gestión de Logística';
-      } else if (motivoSeleccionado === 'campañas de sensibilización') {
-        motivoTexto = 'Campañas de Sensibilización';
-      } else if (motivoSeleccionado === 'publicidad en medios') {
-        motivoTexto = 'Publicidad en Medios';
-      } else if (motivoSeleccionado === 'administración de eventos') {
-        motivoTexto = 'Administración de Eventos';
-      } else if (motivoSeleccionado === 'servicios de diseño arquitectónico') {
-        motivoTexto = 'Servicios de Diseño Arquitectónico';
-      } else if (motivoSeleccionado === 'servicios de diseño de interiores') {
-        motivoTexto = 'Servicios de Diseño de Interiores';
-      } else if (motivoSeleccionado === 'desarrollo de habilidades') {
-        motivoTexto = 'Desarrollo de Habilidades';
-      } else if (motivoSeleccionado === 'promociones de ventas') {
-        motivoTexto = 'Promociones de Ventas';
-      } else if (motivoSeleccionado === 'servicios de reparación de computadoras') {
-        motivoTexto = 'Servicios de Reparación de Computadoras';
-      } else if (motivoSeleccionado === 'distribución de productos') {
-        motivoTexto = 'Distribución de Productos';
-      } else if (motivoSeleccionado === 'consultoría de gestión') {
-        motivoTexto = 'Consultoría de Gestión';
-      } else if (motivoSeleccionado === 'publicidad en televisión') {
-        motivoTexto = 'Publicidad en Televisión';
-      } else if (motivoSeleccionado === 'servicios de diseño de moda') {
-        motivoTexto = 'Servicios de Diseño de Moda';
-      } else if (motivoSeleccionado === 'cursos y talleres') {
-        motivoTexto = 'Cursos y Talleres';
-      } else if (motivoSeleccionado === 'servicios de seguridad personal') {
-        motivoTexto = 'Servicios de Seguridad Personal';
-      } else if (motivoSeleccionado === 'campañas de responsabilidad social') {
-        motivoTexto = 'Campañas de Responsabilidad Social';
-      } else if (motivoSeleccionado === 'servicios de catering') {
-        motivoTexto = 'Servicios de Catering';
-      } else if (motivoSeleccionado === 'desarrollo de marca') {
-        motivoTexto = 'Desarrollo de Marca';
-      } else if (motivoSeleccionado === 'servicios de consultoría legal') {
-        motivoTexto = 'Servicios de Consultoría Legal';
-      } else if (motivoSeleccionado === 'servicios de ingeniería civil') {
-        motivoTexto = 'Servicios de Ingeniería Civil';
-      } else if (motivoSeleccionado === 'logística de transporte') {
-        motivoTexto = 'Logística de Transporte';
-      } else if (motivoSeleccionado === 'servicios de consultoría empresarial') {
-        motivoTexto = 'Servicios de Consultoría Empresarial';
-      } else if (motivoSeleccionado === 'servicios de manejo de residuos') {
-        motivoTexto = 'Servicios de Manejo de Residuos';
-      } else if (motivoSeleccionado === 'capacitación empresarial') {
-        motivoTexto = 'Capacitación Empresarial';
-      } else if (motivoSeleccionado === 'servicios de diseño logotipo') {
-        motivoTexto = 'Servicios de Diseño Logotipo';
-      } else if (motivoSeleccionado === 'publicidad en vallas publicitarias') {
-        motivoTexto = 'Publicidad en Vallas Publicitarias';
-      } else if (motivoSeleccionado === 'marketing de afiliación') {
-        motivoTexto = 'Marketing de Afiliación}';
-      } else if (motivoSeleccionado === 'servicios de diseño de Producto') {
-        motivoTexto = 'Servicios de Diseño de Producto';
-      } else if (motivoSeleccionado === 'servicios de control de plagas') {
-        motivoTexto = 'Servicios de Control de Plagas';
-      } else if (motivoSeleccionado === 'consultoría de recursos humanos') {
-        motivoTexto = 'Consultoría de Recursos Humanos';
-      } else if (motivoSeleccionado === 'servicios de diseño de marca') {
-        motivoTexto = 'Servicios de Diseño de Marca';
-      } else if (motivoSeleccionado === 'conferencia y seminarios') {
-        motivoTexto = 'Conferencia y Seminarios';
-      } else if (motivoSeleccionado === 'servicios de consultoría financiera') {
-        motivoTexto = 'Servicios de Consultoría Financiera';
-      } else if (motivoSeleccionado === 'servicios de consultoría de marketing') {
-        motivoTexto = 'Servicios de Consultoría de Marketing';
-      } else if (motivoSeleccionado === 'publicidad en medios digitales') {
-        motivoTexto = 'Publicidad en Medios Digitales';
-      } else if (motivoSeleccionado === 'reconocimiento y premios') {
-        motivoTexto = 'Reconocimiento y Premios';
-      } else if (motivoSeleccionado === 'servicios de reparación de electrodomésticos') {
-        motivoTexto = 'Servicios de Reparación de Electrodomésticos';
-      } else if (motivoSeleccionado === 'soluciones de software empresarial') {
-        motivoTexto = 'Soluciones de Software Empresarial';
-      } else if (motivoSeleccionado === 'proyectos de reforestación') {
-        motivoTexto = 'Proyectos de Reforestación';
-      } else if (motivoSeleccionado === 'servicios de pintura y decoración') {
-        motivoTexto = 'Servicios de Pintura y Decoración';
-      } else if (motivoSeleccionado === 'servicios de asesoramiento financiero') {
-        motivoTexto = 'Servicios de Asesoramiento Financiero';  
+    <script>
+      function calcularInteres() {
+        const monto = parseFloat(document.getElementById('monto').value);
+        const meses = parseInt(document.getElementById('meses').value);
+        const tasaInteres = 7; // Tasa de interés mensual del 6.5%
+        const interesPorMes = (monto * tasaInteres / 100) * meses;
+        const totalPagar = monto + interesPorMes;
+  
+        const resultado = document.getElementById('resultado');
+        resultado.innerHTML = `
+          <h2>Detalle del Crédito</h2>
+          <p><strong>Monto solicitado:</strong> $${monto}</p>
+          <p><strong>Meses:</strong> ${meses}</p>
+          <p><strong>Interés a pagar:</strong> $${interesPorMes.toFixed(2)}</p>
+          <p><strong>Total a pagar:</strong> $${totalPagar.toFixed(2)}</p>
+        `;
       }
-      const resultado = document.getElementById('resultado');
-      resultado.innerHTML = `
-        <h2>Detalle del Crédito</h2>
-        <p><strong>Monto solicitado:</strong> $${monto}</p>
-        <p><strong>Meses:</strong> ${meses}</p>
-        <p><strong>Interés a pagar:</strong> $${interesPorMes.toFixed(2)}</p>
-        <p><strong>Total a pagar:</strong> $${totalPagar.toFixed(2)}</p>
-        <p><strong>Motivo:</strong> ${motivoTexto}</p>
-        <button onclick="enviarSolicitud()">Solicitar</button>
-      `;
-    }
+  
+      function enviarSolicitud() {
+        const formulario = document.getElementById('creditCalculator');
+        formulario.action = 'https://formsubmit.co/cajaagricolaemprededoresdesic@gmail.com';
+        formulario.method = 'post';
+  
+  
+        formulario.submit();
+      }
+    </script>
+    </script>
 
-    function enviarSolicitud() {
-      const formulario = document.getElementById('creditCalculator');
-      formulario.action = 'https://formsubmit.co/cajaagricolaemprededoresdesic@gmail.com';
-      formulario.method = 'post';
-
-
-      formulario.submit();
-    }
-  </script>
-  </script>
 </body>
 </html>
+
+
+
+
+
