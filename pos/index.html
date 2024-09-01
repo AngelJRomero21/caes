@@ -75,7 +75,7 @@
     <script>
         async function cargarDatos() {
             try {
-                const response = await fetch('datos_comercio.json');
+                const response = await fetch('/pos/comercio.json');
                 const datosComercio = await response.json();
                 return datosComercio;
             } catch (error) {
