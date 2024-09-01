@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Punto de Venta Virtual</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 300px;
+            width: 100%;
+        }
+        input[type="password"], input[type="number"], input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #logo {
+            margin-top: 20px;
+            max-width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="login-container">
+        <h1>Iniciar Sesión</h1>
+        <form id="login-form">
+            <input type="text" id="username" placeholder="Usuario" required>
+            <input type="password" id="password" placeholder="Contraseña" required>
+            <button type="submit">Ingresar</button>
+        </form>
+    </div>
+
+    <div class="container" id="pos-container" style="display:none;">
+        <h1 id="nombre-comercio"></h1>
+        <img id="logo" src="" alt="Logo del Comercio">
+        <form id="payment-form">
+            <input type="number" id="amount" placeholder="Ingresa el monto" required>
+            <button type="submit">Pagar</button>
+        </form>
+        <div id="bpay-container"></div>
+    </div>
+
+    <script>
+        async function cargarDatos() {
+            try {
+                const response = await fetch('/pos/comercio.json');
+                const datosComercio = await response.json();
+                return datosComercio;
+            } catch (error) {
+                console.error("Error al cargar los datos del comercio:", error);
+                alert("Error al cargar los datos del comercio.");
+            }
+        }
+
+        document.getElementById("login-form").addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const datosComercio = await cargarDatos();
+            const usuarioIngresado = document.getElementById("username").value;
+            const contrasenaIngresada = document.getElementById("password").value;
+
+            if (usuarioIngresado === datosComercio.usuario && contrasenaIngresada === datosComercio.contrasena) {
+                document.getElementById("login-container").style.display = "none";
+                document.getElementById("pos-container").style.display = "block";
+                document.getElementById("nombre-comercio").textContent = datosComercio.comercio;
+                document.getElementById("logo").src = datosComercio.logo;
+            } else {
+                alert("Usuario o contraseña incorrectos.");
+            }
+        });
+
+        document.getElementById("payment-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const amount = document.getElementById("amount").value;
+            const bpayKey = "TU_BPAY_KEY"; 
+            const reference = `REF-${Date.now()}`; 
+
+            if (amount) {
+                const config = {
+                    clientId: bpayKey,
+                    amount: amount,
+                    ref: reference,
+                    onConnected: (res) => {
+                        console.log("Conexión establecida:", res);
+                    },
+                    onSuccess: (res) => {
+                        alert("Pago exitoso. Detalles: " + JSON.stringify(res));
+                    },
+                    onReject: (res) => {
+                        alert("Pago rechazado. Detalles: " + JSON.stringify(res));
+                    },
+                    onError: (res) => {
+                        alert("Error en la transacción. Detalles: " + JSON.stringify(res));
+                    },
+                };
+                
+                bpay(config).render("bpay-container");
+            } else {
+                alert("Por favor, ingresa un monto válido.");
+            }
+        });
+    </script>
+</body>
+</html>
