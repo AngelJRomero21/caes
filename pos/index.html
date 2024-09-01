@@ -70,10 +70,12 @@
         <div id="bpay-container"></div>
     </div>
 
+    <!-- Incluir el SDK de BPAY -->
+    <script src="https://bpay.btc.com.ve/js/bpay/sdk.js"></script>
     <script>
         async function cargarDatos() {
             try {
-                const response = await fetch('/pos/comercio.json');
+                const response = await fetch('datos_comercio.json');
                 const datosComercio = await response.json();
                 return datosComercio;
             } catch (error) {
@@ -103,8 +105,8 @@
             event.preventDefault();
 
             const amount = document.getElementById("amount").value;
-            const bpayKey = "TU_BPAY_KEY"; 
-            const reference = `REF-${Date.now()}`; 
+            const bpayKey = "TU_BPAY_KEY"; // Reemplaza con tu clave de BPAY
+            const reference = `REF-${Date.now()}`; // Generar una referencia única
 
             if (amount) {
                 const config = {
@@ -125,7 +127,11 @@
                     },
                 };
                 
-                bpay(config).render("bpay-container");
+                if (typeof bpay !== "undefined") {
+                    bpay(config).render("bpay-container");
+                } else {
+                    alert("El SDK de BPAY no se ha cargado correctamente.");
+                }
             } else {
                 alert("Por favor, ingresa un monto válido.");
             }
