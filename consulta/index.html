@@ -508,7 +508,7 @@ p.saludo {
           var ultimosCuatro = document.getElementById("ultimosCuatro").value;
         
           // Realizar solicitud a la API
-          axios.get(`https://api.redlinuxclick.com:8443/api/accounts/${codigoUsuario}`)
+          axios.get(`https://apisms.cromstudio.com.ve:8443/api/accounts/${codigoUsuario}`)
             .then(response => {
               const userId = response.data.user.id;
               const lastFourDigits = userId.slice(-4); // Obtener los últimos 4 dígitos del ID de usuario
