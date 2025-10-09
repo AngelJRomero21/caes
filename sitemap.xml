@@ -5,8 +5,6 @@
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-
 <url>
   <loc>https://caes.cromstudio.com.ve/</loc>
   <lastmod>2024-02-25T15:10:34+00:00</lastmod>
@@ -32,6 +30,7 @@
   <lastmod>2024-02-25T15:10:34+00:00</lastmod>
   <priority>0.64</priority>
 </url>
+
 
 
 </urlset>
