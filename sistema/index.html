@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema</title>
+    
+    <!-- Intenta forzar que la redirección HTTP de iFastNet se haga por HTTPS -->
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    
     <style>
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: hidden; /* Evita doble scroll */
+            overflow: hidden;
+            background-color: #f4f4f4;
         }
         iframe {
             width: 100%;
@@ -20,7 +25,14 @@
     </style>
 </head>
 <body>
-    <!-- Reemplaza con la URL real de la web del cliente -->
-    <iframe src="https://caes.page.gd/dashboard.php"></iframe>
+
+    <!-- Atributos sandbox para dar permisos explícitos al script antibots de iFastNet -->
+    <iframe 
+        src="https://caes.page.gd/dashboard.php" 
+        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation"
+        allow="encrypted-media"
+        title="Sistema">
+    </iframe>
+
 </body>
 </html>
